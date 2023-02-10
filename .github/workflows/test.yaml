@@ -13,8 +13,5 @@ jobs:
             owner: 'Shankarsharm',
             repo: 'GA_Actions',
             workflow_id: 'swc.yml',
-            ref: 'master',
-            inputs: {
-              repo: ${{ github.repository }}
-            }
+            ref: 'master'
           })
