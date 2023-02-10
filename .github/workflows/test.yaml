@@ -4,9 +4,14 @@ jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: triggering GA Repo
-        run: |
-          curl -X POST https://api.github.com/repos/Shankarsharm/GA_Actions/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.ACTIONS_KEY }} \
-          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+    - name: triggering GA Repo
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.ACTIONS_KEY }}
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+            owner: 'Shankarsharm',
+            repo: 'GA_Actions',
+            workflow_id: 'swc.yml',
+            ref: 'master'
+          })
