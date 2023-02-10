@@ -1,5 +1,5 @@
 name: Trigger another job
-on: push
+on: ["push", "workflow_dispatch"]
 jobs:
   trigger:
     runs-on: ubuntu-latest
