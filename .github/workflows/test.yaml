@@ -15,6 +15,6 @@ jobs:
             workflow_id: 'swc.yml',
             ref: 'master',
             inputs: {
-              repo: ${{ toJson(github) }}
+              repo: ${{ github.repository }}
             }
           })
